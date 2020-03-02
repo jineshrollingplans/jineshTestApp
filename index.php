@@ -7,7 +7,7 @@
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 
-define('LARAVEL_START', microtime(true));
+// define('LARAVEL_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +21,7 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-require __DIR__.'/local/vendor/autoload.php';
+require __DIR__.'/local/bootstrap/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +36,16 @@ require __DIR__.'/local/vendor/autoload.php';
 */
 
 $app = require_once __DIR__.'/local/bootstrap/app.php';
+define('DIR_IMAGE', __DIR__.'/image/');
+define('PUBLIC_DIR', __DIR__.'/local/');
+if(isset($_SERVER['HTTPS'])){
+        		$protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
+    			}
+    		else{
+        		$protocol = 'http';
+    			}
+    		$catlog= $protocol . "://" . $_SERVER['HTTP_HOST'];
+define('HTTP_CATALOG', $catlog.'/laravel/');
 
 /*
 |--------------------------------------------------------------------------
